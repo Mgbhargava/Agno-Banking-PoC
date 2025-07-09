@@ -19,6 +19,7 @@
 from agno.agent import Agent
 from agno.models import groq  # Or LLaMA3, Gemma depending on your preference
 from agno.tools.reasoning import ReasoningTools
+from agno.tools.duckduckgo import DuckDuckGoTools
 from dotenv import load_dotenv
 import os
 
@@ -28,6 +29,6 @@ os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")  # Set GROQ_API_KEY env v
 
 agent = Agent(
     model=groq.Groq(id="deepseek-r1-distill-llama-70b"),  # Replace with 'llama3-70b-8192' or 'gemma-7b-it' if preferred
-    tools=[ReasoningTools()],
+    tools=[ReasoningTools(),DuckDuckGoTools()],
     instructions="You are a helpful banking assistant. Explain financial and banking concepts clearly with practical examples."
 )
